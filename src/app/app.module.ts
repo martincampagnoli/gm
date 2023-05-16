@@ -24,6 +24,8 @@ import { MainComponent } from './components/main/main.component';
 import { appReducer } from './store/reducers';
 import { AppEffects } from './store/effects';
 import { FormRenderComponent } from './components/form-render/form-render.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const mat = [
   MatCardModule,
@@ -46,7 +48,10 @@ const mat = [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    CommonModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({}),
     StoreModule.forFeature('app', appReducer),
     EffectsModule.forRoot([AppEffects]),
