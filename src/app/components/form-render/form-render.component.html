@@ -1,0 +1,29 @@
+<div class="center">
+  <form *ngIf="formData" [formGroup]="renderForm">
+    <div *ngFor="let item of formData">
+      <div [ngSwitch]="item.type">
+        <div *ngSwitchCase="'text'">
+          <mat-form-field *ngIf="item.hidden !== 'true'">
+            <mat-label>{{ item.label }}</mat-label>
+            <input matInput formControlName="{{ item.field }}" />
+          </mat-form-field>
+        </div>
+        <div *ngSwitchCase="'check'">
+          <mat-checkbox
+            *ngIf="item.hidden !== 'true'"
+            formControlName="{{ item.field }}"
+            >{{ item.label }}
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+    <button
+      (click)="onSubmit()"
+      [disabled]="renderForm.invalid"
+      mat-button
+      color="primary"
+    >
+      Send
+    </button>
+  </form>
+</div>
