@@ -20,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { MainComponent } from './components/main/main.component';
+import { appReducer } from './store/reducers';
+import { AppEffects } from './store/effects';
 
 const mat = [
   MatCardModule,
@@ -42,8 +44,9 @@ const mat = [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot({}),
+    StoreModule.forFeature('app', appReducer),
+    EffectsModule.forRoot([AppEffects]),
     ...mat,
   ],
   exports: [...mat],
