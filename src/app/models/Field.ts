@@ -3,5 +3,5 @@ export interface Field {
   label: string;
   type: string;
   hidden: string;
-  mandatory: boolean;
+  mandatory?: boolean;
 }
