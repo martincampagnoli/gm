@@ -16,12 +16,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { MainComponent } from './components/main/main.component';
 import { appReducer } from './store/reducers';
 import { AppEffects } from './store/effects';
+import { FormRenderComponent } from './components/form-render/form-render.component';
 
 const mat = [
   MatCardModule,
@@ -39,11 +41,12 @@ const mat = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, MainComponent],
+  declarations: [AppComponent, MainComponent, FormRenderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     StoreModule.forRoot({}),
     StoreModule.forFeature('app', appReducer),
     EffectsModule.forRoot([AppEffects]),
