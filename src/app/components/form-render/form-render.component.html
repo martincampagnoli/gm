@@ -1,5 +1,5 @@
 <div class="center">
-  <form *ngIf="formData" [formGroup]="renderForm">
+  <form *ngIf="formData?.length !== 0" [formGroup]="renderForm">
     <div *ngFor="let item of formData">
       <div [ngSwitch]="item.type">
         <div *ngSwitchCase="'text'">
@@ -20,6 +20,7 @@
     </div>
     <br />
     <button
+      *ngIf="formData?.length !== 0"
       (click)="onSubmit()"
       [disabled]="renderForm.invalid"
       mat-raised-button
@@ -28,4 +29,5 @@
       Send
     </button>
   </form>
+  <mat-card *ngIf="formData?.length === 0">JSON file is empty</mat-card>
 </div>
