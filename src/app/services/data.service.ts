@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class DataService {
   constructor(private httpClient: HttpClient) {}
 
+  //to update to an external API
   url = '/assets/mock/to-render.json';
 
   getData(): Observable<any> {

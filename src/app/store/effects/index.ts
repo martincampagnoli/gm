@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { of, catchError, share, switchMap } from 'rxjs';
+import { of, catchError, switchMap } from 'rxjs';
 
 import * as actions from '../actions';
 import { DataService } from 'src/app/services/data.service';
@@ -11,7 +11,7 @@ export class AppEffects {
   // Default effect
   $getData = createEffect(() =>
     this.actions$.pipe(ofType(actions.GET_DATA)).pipe(
-      switchMap((action: any) =>
+      switchMap(() =>
         this.dataService.getData().pipe(
           switchMap((data) => [new actions.GetDataSuccess(data)]),
           catchError((error) =>
@@ -22,8 +22,7 @@ export class AppEffects {
             )
           )
         )
-      ),
-      share()
+      )
     )
   );
 }
